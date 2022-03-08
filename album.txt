@@ -1,0 +1,69 @@
+album {
+    display: block; új sor
+    border: thin solid black;
+    border-radius: 0.5em; lekerekítés
+    box-shadow: 0.5em 0.5em 0.5em gray; árnyékot kapjon x irányú, y irányú, mennyire elmosódott, mennyire legyen szétszórt ,szín ?
+    width: -moz (böngésző)-fit-content; egész szélessége akkora amekkorába belefér épp a tartalma
+    width: fit-content;?
+    padding: 0.5em;
+    margin: 1em auto; auto balról jobbra tolja annyival amennyivel lehet középre teszi
+}
+
+artist, album > title, year {
+    font-size: x-large;
+    display: inline-block? 1 sorban a szöveg, és legyen méretezhető
+    margin-bottom: 0.5em;
+}
+
+artist::after {
+    content: " \2013 ";
+}
+
+year::before {
+    content: "(";
+}
+
+year::after {
+    content: ")";
+}
+
+tracks {
+    display: table; táblázatként
+    counter-reset: track-number; a táblázaton belül létrehoztunk 1 számlálót
+    width: 100%; ahhoz a legelső szülőhöz(album) szélességéhez viszonyítva 100%
+}
+
+track {
+    display: table-row; 1 track 1 sor 
+}
+
+track > title, length {  
+    display: table-cell; soron belül cellára osztja, egyik a title a másik a length
+    padding: 0.5em;
+}
+
+track > title::before {
+    content: counter(track-number) "."; A számozás formátuma, a szám után "."
+    counter-increment: track-number; Mindig 1-gyel növeli
+    display: inline-block; 
+    width: 2em; nincs rácsúszva a szövegre 
+    text-ali:gn: right; title sorszámát
+    margin-right: 0.5em;
+}
+
+length {
+    text-align: right; ? album hosszát
+}
+
+track:nth-child(odd) ? { odd-minden páratlan 3n 5n
+    background-color: whitesmoke;
+}
+
+track:nth-child(even) { minden párost
+    background-color: white;
+}
+
+track:hover {
+    background-color: gold;
+    font-weight: bold;
+}
